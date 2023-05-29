@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import "@fontsource/inter";
 
 import Home from "./pages/home";
 import Connexion from "./pages/connexion";
@@ -26,6 +27,7 @@ const pages = ['princing', 'Sign-in', 'Sign-up'];
 const pathPages = ['/princing', '/sign-in', '/sign-up'];
 const settings = ['Account', 'Dashboard', 'Logout'];
 const pathSettings = ['/account', '/dashboard', '/logout']
+const appBarTextColor = '#02016F'
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -48,7 +50,7 @@ function ResponsiveAppBar() {
 
   return (
     <BrowserRouter>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: '#f6f7ff' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -60,10 +62,10 @@ function ResponsiveAppBar() {
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
+                fontFamily: 'Inter',
+                fontWeight: 300,
+                letterSpacing: '.1rem',
+                color: appBarTextColor,
                 textDecoration: 'none',
               }}
             >
@@ -116,10 +118,10 @@ function ResponsiveAppBar() {
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
                 flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
+                fontFamily: 'Roboto',
+                fontWeight: 300,
+                letterSpacing: '.1rem',
+                color: appBarTextColor,
                 textDecoration: 'none',
               }}
             >
@@ -130,7 +132,7 @@ function ResponsiveAppBar() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: appBarTextColor, display: 'block' }}
                   component={Link}
                   to={pathPages[pages.indexOf(page)]}
                 >
