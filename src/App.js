@@ -20,11 +20,11 @@ import Connexion from "./pages/connexion";
 import Account from "./pages/account";
 import SignUp from './pages/sign-up';
 import Dashboard from './pages/dashboard';
-import Princing from './pages/pricing';
+import Pricing from './pages/pricing';
 import SignIn from './pages/sign-in';
 
-const pages = ['princing', 'Sign-in', 'Sign-up'];
-const pathPages = ['/princing', '/sign-in', '/sign-up'];
+const pages = ['Pricing', 'Sign-in', 'Sign-up'];
+const pathPages = ['/pricing', '/sign-in', '/sign-up'];
 const settings = ['Account', 'Dashboard', 'Logout'];
 const pathSettings = ['/account', '/dashboard', '/logout']
 const appBarTextColor = '#02016F'
@@ -79,7 +79,7 @@ function ResponsiveAppBar() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color="inherit"
+                sx={{ color: appBarTextColor }}
               >
                 <MenuIcon />
               </IconButton>
@@ -102,7 +102,7 @@ function ResponsiveAppBar() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem sx={{ background: '#f6f7ff' }} key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
@@ -118,7 +118,7 @@ function ResponsiveAppBar() {
                 mr: 2,
                 display: { xs: 'flex', md: 'none' },
                 flexGrow: 1,
-                fontFamily: 'Roboto',
+                fontFamily: 'Inter',
                 fontWeight: 300,
                 letterSpacing: '.1rem',
                 color: appBarTextColor,
@@ -144,7 +144,7 @@ function ResponsiveAppBar() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Benoit COEUGNET" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -165,7 +165,7 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} component={Link} to={pathSettings[settings.indexOf(setting)]} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center" sx={{ color: appBarTextColor }} >{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -180,10 +180,10 @@ function ResponsiveAppBar() {
         <Route path="/account" element={<Account />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/princing" element={<Princing />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/Sign-in" element={<SignIn />} />
       </Routes >
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 export default ResponsiveAppBar;
