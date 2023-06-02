@@ -102,8 +102,8 @@ function ResponsiveAppBar() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem sx={{ background: '#f6f7ff' }} key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center" sx={{ fontFamily: 'Inter', fontWeight: 300 }}>{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -132,7 +132,7 @@ function ResponsiveAppBar() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: appBarTextColor, display: 'block' }}
+                  sx={{ my: 2, color: appBarTextColor, fontFamily: "Inter", fontWeight: 300, display: 'block' }}
                   component={Link}
                   to={pathPages[pages.indexOf(page)]}
                 >
@@ -165,7 +165,7 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} component={Link} to={pathSettings[settings.indexOf(setting)]} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center" sx={{ color: appBarTextColor }} >{setting}</Typography>
+                    <Typography textAlign="center" >{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
