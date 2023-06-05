@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,7 +12,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import AdbIcon from '@mui/icons-material/SportsMartialArts';
+import Grid from '@mui/material/Grid';
 import "@fontsource/inter";
 
 import Home from "./pages/home";
@@ -28,6 +29,44 @@ const pathPages = ['/pricing', '/sign-in', '/sign-up'];
 const settings = ['Account', 'Dashboard', 'Logout'];
 const pathSettings = ['/account', '/dashboard', '/logout']
 const appBarTextColor = '#02016F'
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit">
+        CRM Sport
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const footers = [
+  {
+    title: 'Company',
+    description: ['Team', 'History', 'Contact us', 'Locations'],
+  },
+  {
+    title: 'Features',
+    description: [
+      'Cool stuff',
+      'Random feature',
+      'Team feature',
+      'Developer stuff',
+      'Another one',
+    ],
+  },
+  {
+    title: 'Resources',
+    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
+  },
+  {
+    title: 'Legal',
+    description: ['Privacy policy', 'Terms of use'],
+  },
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -48,12 +87,13 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+
   return (
     <BrowserRouter>
       <AppBar position="static" style={{ backgroundColor: '#f6f7ff' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <AdbIcon sx={{ color: appBarTextColor, display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
               variant="h5"
               noWrap
@@ -63,8 +103,8 @@ function ResponsiveAppBar() {
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'Inter',
-                fontWeight: 300,
-                letterSpacing: '.1rem',
+                fontWeight: 700,
+                letterSpacing: '.01rem',
                 color: appBarTextColor,
                 textDecoration: 'none',
               }}
@@ -102,8 +142,8 @@ function ResponsiveAppBar() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem sx={{ background: '#f6f7ff' }} key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center" sx={{ fontFamily: 'Inter', fontWeight: 300 }}>{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -132,7 +172,7 @@ function ResponsiveAppBar() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: appBarTextColor, display: 'block' }}
+                  sx={{ my: 2, color: appBarTextColor, fontFamily: "Inter", fontWeight: 300, display: 'block' }}
                   component={Link}
                   to={pathPages[pages.indexOf(page)]}
                 >
@@ -165,7 +205,7 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} component={Link} to={pathSettings[settings.indexOf(setting)]} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center" sx={{ color: appBarTextColor }} >{setting}</Typography>
+                    <Typography textAlign="center" >{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -183,7 +223,42 @@ function ResponsiveAppBar() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/Sign-in" element={<SignIn />} />
       </Routes >
+      <Box
+        sx={{ backgroundColor: '#f6f7ff' }}
+      >
+        <Container
+          maxWidth="md"
+          component="footer"
+          sx={{
+            borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+            mt: 8,
+            py: [3, 6],
+          }}
+        >
+          <Grid container spacing={4} justifyContent="space-evenly">
+            {footers.map((footer) => (
+              <Grid item xs={6} sm={3} key={footer.title}>
+                <Typography variant="h6" sx={{ color: appBarTextColor }} gutterBottom>
+                  {footer.title}
+                </Typography>
+                <ul>
+                  {footer.description.map((item) => (
+                    <li key={item}>
+                      <Link href="#" variant="subtitle1" color="text.secondary">
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Grid>
+            ))}
+          </Grid>
+          <Copyright sx={{ mt: 5 }} />
+        </Container>
+      </Box>
     </BrowserRouter >
+
+
   );
 }
 export default ResponsiveAppBar;
