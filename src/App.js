@@ -21,13 +21,12 @@ import "@fontsource/inter";
 import Home from "./pages/home";
 import Connexion from "./pages/connexion";
 import Account from "./pages/account";
-import SignUp from './pages/sign-up';
 import Dashboard from './pages/dashboard';
 import Pricing from './pages/pricing';
-import SignIn from './pages/sign-in';
 
-const pages = ['Pricing', 'Sign-in', 'Sign-up'];
-const pathPages = ['/pricing', '/sign-in', '/sign-up'];
+
+const pages = ['Pricing', 'Connexion'];
+const pathPages = ['/pricing', '/Connexion'];
 const settings = ['Account', 'Dashboard', 'Logout'];
 const pathSettings = ['/account', '/dashboard', '/logout']
 const appBarTextColor = '#02016F'
@@ -236,10 +235,8 @@ function ResponsiveAppBar() {
         <Route path="/" element={<Home />} />
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/Sign-in" element={<SignIn />} />
       </Routes >
       <Box
         sx={{ backgroundColor: '#f6f7ff' }}
