@@ -91,8 +91,8 @@ function ResponsiveAppBar() {
   return (
     <BrowserRouter>
       <AppBar position="static" style={{ backgroundColor: '#f6f7ff' }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
+        <Container maxWidth="xl" >
+          <Toolbar disableGutters >
             <AdbIcon sx={{ color: appBarTextColor, display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
               variant="h5"
@@ -233,6 +233,7 @@ function ResponsiveAppBar() {
             borderTop: (theme) => `1px solid ${theme.palette.divider}`,
             mt: 8,
             py: [3, 6],
+
           }}
         >
           <Grid container spacing={4} justifyContent="space-evenly">
