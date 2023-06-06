@@ -105,24 +105,28 @@ function Home() {
       </Grid>
 
       <Box sx={{ flexGrow: 1 }} style={{ padding: '30px 130px' }}>
-        <Grid item xs={12} style={{ padding: '30px 130px' }}>
-          <Typography variant="h4" sx={typoProperties} justifyContent={"center"} >Nos fonctionnalités</Typography>
-        </Grid>
-        <Grid container spacing={{ xs: 1, md: 3 }} columns={{ xs: 1, sm: 4, md: 16 }}>
-          {iconsFunctionalities.map((Icon, index) => (
-            <Grid xs={1} sm={4} md={4} key={index}>
-              <Item>
-                <Icon key={index} sx={{ fontSize: 40 }} />
-                <Typography variant="subtitle1" sx={{ fontFamily: 'Inter', fontWeight: 500, letterSpacing: '.001rem', color: '#02016F', textDecoration: 'none' }} >
-                  {textFunctionalities[index]}
-                </Typography>
+        <Grow style={{ transformOrigin: '0 0 0' }} in={true} timeout={2000} >
+          <Grid item xs={12} style={{ padding: '30px 130px' }}>
+            <Typography variant="h4" sx={typoProperties} justifyContent={"center"} >Nos fonctionnalités</Typography>
+          </Grid>
+        </Grow>
+        <Grow style={{ transformOrigin: '0 0 0' }} in={true} timeout={2000} >
+          <Grid container spacing={{ xs: 1, md: 3 }} columns={{ xs: 1, sm: 4, md: 16 }}>
+            {iconsFunctionalities.map((Icon, index) => (
+              <Grid xs={1} sm={4} md={4} key={index}>
+                <Item>
+                  <Icon key={index} sx={{ fontSize: 40 }} />
+                  <Typography variant="subtitle1" sx={{ fontFamily: 'Inter', fontWeight: 500, letterSpacing: '.001rem', color: '#02016F', textDecoration: 'none' }} >
+                    {textFunctionalities[index]}
+                  </Typography>
 
-              </Item>
-            </Grid>
-          ))}
-        </Grid>
+                </Item>
+              </Grid>
+            ))}
+          </Grid>
+        </Grow>
       </Box >
-    </Grid>
+    </Grid >
 
   );
 }
