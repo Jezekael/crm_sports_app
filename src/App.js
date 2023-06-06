@@ -14,6 +14,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/SportsMartialArts';
 import Grid from '@mui/material/Grid';
+import Slide from '@mui/material/Slide';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 import "@fontsource/inter";
 
 import Home from "./pages/home";
@@ -68,6 +70,20 @@ const footers = [
   },
 ];
 
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
+
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -90,129 +106,131 @@ function ResponsiveAppBar() {
 
   return (
     <BrowserRouter>
-      <AppBar position="static" style={{ backgroundColor: '#f6f7ff' }}>
-        <Container maxWidth="xl" >
-          <Toolbar disableGutters >
-            <AdbIcon sx={{ color: appBarTextColor, display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'Inter',
-                fontWeight: 700,
-                letterSpacing: '.01rem',
-                color: appBarTextColor,
-                textDecoration: 'none',
-              }}
-            >
-              CRM Sport
-            </Typography>
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                sx={{ color: appBarTextColor }}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+      <HideOnScroll >
+        <AppBar elevation={0} position="sticky" style={{ backgroundColor: '#f6f7ff' }}>
+          <Container maxWidth="xl" >
+            <Toolbar disableGutters >
+              <AdbIcon sx={{ color: appBarTextColor, display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+              <Typography
+                variant="h5"
+                noWrap
+                component="a"
+                href="/"
                 sx={{
-                  display: { xs: 'block', md: 'none' },
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'Inter',
+                  fontWeight: 700,
+                  letterSpacing: '.01rem',
+                  color: appBarTextColor,
+                  textDecoration: 'none',
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center" sx={{ fontFamily: 'Inter', fontWeight: 300 }}>{page}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'Inter',
-                fontWeight: 300,
-                letterSpacing: '.1rem',
-                color: appBarTextColor,
-                textDecoration: 'none',
-              }}
-            >
-              CRM Sport
-            </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: appBarTextColor, fontFamily: "Inter", fontWeight: 300, display: 'block' }}
-                  component={Link}
-                  to={pathPages[pages.indexOf(page)]}
-                >
-                  {page}
-                </Button>
-              ))}
-            </Box>
+                CRM Sport
+              </Typography>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Benoit COEUGNET" src="/static/images/avatar/2.jpg" />
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  sx={{ color: appBarTextColor }}
+                >
+                  <MenuIcon />
                 </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                  }}
+                >
+                  {pages.map((page) => (
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center" sx={{ fontFamily: 'Inter', fontWeight: 300 }}>{page}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+              <AdbIcon sx={{ color: appBarTextColor, display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              <Typography
+                variant="h5"
+                noWrap
+                component="a"
+                href=""
+                sx={{
+                  mr: 2,
+                  display: { xs: 'flex', md: 'none' },
+                  flexGrow: 1,
+                  fontFamily: 'Inter',
+                  fontWeight: 700,
+                  letterSpacing: '.01rem',
+                  color: appBarTextColor,
+                  textDecoration: 'none',
                 }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} component={Link} to={pathSettings[settings.indexOf(setting)]} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center" >{setting}</Typography>
-                  </MenuItem>
+                CRM Sport
+              </Typography>
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                {pages.map((page) => (
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: appBarTextColor, fontFamily: "Inter", fontWeight: 300, display: 'block' }}
+                    component={Link}
+                    to={pathPages[pages.indexOf(page)]}
+                  >
+                    {page}
+                  </Button>
                 ))}
-              </Menu>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
+              </Box>
+
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Benoit COEUGNET" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} component={Link} to={pathSettings[settings.indexOf(setting)]} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" >{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </HideOnScroll>
 
       <Routes >
         <Route path="/" element={<Home />} />

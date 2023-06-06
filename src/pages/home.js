@@ -57,8 +57,8 @@ const textFunctionalities =
 
 function Home() {
   return (
-    <Grid container spacing={3} style={{ backgroundColor: '#f6f7ff' }}>
-      <Grid item xs={12} style={{ padding: '75px 130px' }}>
+    <Grid container spacing={0} style={{ backgroundColor: '#f6f7ff' }}>
+      <Grid item xs={12} style={{ padding: '60px 130px' }}>
         <Grid xs display="flex" >
           <Grid item>
             <Grow style={{ transformOrigin: '0 0 0' }} in={true} timeout={2000} >
