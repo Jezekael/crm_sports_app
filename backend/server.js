@@ -1,34 +1,30 @@
-// server.js (Node.js/Express)
+const { MongoClient } = require("mongodb");
 
-const express = require('express');
-const mongoose = require('mongoose');
-const app = express();
+// Replace the uri string with your connection string.
+const uri = "mongodb+srv://MaiwennKermorgant:12345@cluster0.aeiuwwu.mongodb.net/";
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://root:12345@cluster0.drtzyph.mongodb.net/?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(error => console.log(error));
+const client = new MongoClient(uri);
 
-// Define a schema and model for your MongoDB collection
-const exampleSchema = new mongoose.Schema({
-  name: String,
-  age: Number,
-});
-
-const ExampleModel = mongoose.model('example', exampleSchema);
-
-// Create API endpoint for fetching examples
-app.get('/api/examples', async (req, res) => {
+async function run() {
   try {
-    const examples = await ExampleModel.find();
-    res.json(examples);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+    const database = client.db('sample_mflix');
+    const movies = database.collection('movies');
 
-// Start the server
-app.listen(3001, () => console.log('Server is running on port 3001'));
+    // Query for a movie that has the title 'Back to the Future'
+    const query = { title: 'Back to the Future' };
+    const movie = await movies.findOne(query);
+
+    console.log(movie);
+    //test insertion
+    const myDB = client.db("Associations");
+    const mycoll = myDB.collection("Assos");
+    const doc = {nom : "Lézarts", adresse : "Bâtiment B"};
+    const result = await mycoll.insertOne(doc);
+    console.log("Insertion d'un document");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+
+}
+run().catch(console.dir);
