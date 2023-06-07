@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import { List, ListItem, ListItemText, Divider, Stack, useTheme } from '@mui/material';
@@ -9,51 +9,43 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);    
 
-class CalendarDisplay extends Component {
-  state = {
-    events: [
-      {
+
+
+function CalendarDisplay() {
+    const theme = useTheme();
+
+    const [events, setEvents] = useState([{
         start: moment().toDate(),
         end: moment()
-          .add(1, "days")
-          .toDate(),
+        .add(1, "days")
+        .toDate(),
         title: "Some title"
-      }
-    ]
-  };
+    }]);
 
-  render() {
     return (
         <>
-            <h2>Calendar</h2>
+            <h2 style={{color: theme.palette.primary.main}}>Calendar</h2>
             <Grid container spacing={2}>
-                <Grid item xs={1}
-                style={{
+                <Grid item xs={3}></Grid>
+                <Grid item xs={6} style={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center"
-                }}
-                >
-                </Grid>
-                <Grid item xs={11}>
-                <Grid xs display="flex">
-                    <Grid item>
+                    }}>
                     <div className="calendarStyle">
                         <Calendar
                         localizer={localizer}
                         defaultDate={new Date()}
                         defaultView="month"
-                        events={this.state.events}
+                        events={events}
                         style={{ height: "50vh" }}
                         />
                     </div>
-                    </Grid>
                 </Grid>
-                </Grid >
+                <Grid item xs={3}></Grid>
             </Grid >
-      </>
+        </>
     );
-  }
 }
 
 function MemberDisplay() {
@@ -70,12 +62,13 @@ function MemberDisplay() {
     const listStyle = {
         width: '100%',
         maxWidth: 360,
-        bgcolor: theme.palette.background.secondary,
+        bgcolor: theme.palette.secondary.main,
+        color: theme.palette.primary.variant,
       };
     
     return (
         <>
-            <h2>Members</h2>
+            <h2 style={{color: theme.palette.primary.main}}>Members</h2>
             <List sx={listStyle}>
                 {Members.map ((member) => (
                     <>
@@ -94,8 +87,9 @@ function NewsDisplay() {
     const theme = useTheme();
 
     const newStyle = {
-        backgroundColor: theme.palette.background.secondary,
-        padding: '10px'
+        padding: '10px',
+        backgroundColor: theme.palette.secondary.variant,
+        color: theme.palette.primary.variant,
     };
 
     const news = [
@@ -105,7 +99,7 @@ function NewsDisplay() {
 
     return (
         <>
-            <h2>News</h2>
+            <h2 style={{color: theme.palette.primary.main}}>News</h2>
             <Stack 
                 direction="row-reverse"
                 spacing={2}
@@ -126,9 +120,11 @@ function NewsDisplay() {
 }
 
 function Dashboard() {
+    const theme = useTheme();
+
     return (
-        <>
-            <h1>Dashboard</h1>
+        <div style={{padding: 20}}>
+            <h1 style={{color: theme.palette.primary.main}}>Dashboard</h1>
             <Grid container spacing={2}>
                 <Grid xs={9}>
                     <CalendarDisplay />
@@ -140,7 +136,7 @@ function Dashboard() {
                     <NewsDisplay />
                 </Grid>
             </Grid>
-        </>
+        </div>
     )
 }
 
