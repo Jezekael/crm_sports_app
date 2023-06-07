@@ -1,26 +1,13 @@
 import React, { Component } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import { List, ListItem, ListItemText, Divider, Stack } from '@mui/material';
+import { List, ListItem, ListItemText, Divider, Stack, useTheme } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
-// import { render } from "@testing-library/react";
 
-const localizer = momentLocalizer(moment);
-
-const listStyle = {
-    width: '100%',
-    maxWidth: 360,
-    bgcolor: 'background.paper',
-  };
-
-const newStyle = {
-    backgroundColor: '#f6f7ff',
-    padding: '10px'
-};
-    
+const localizer = momentLocalizer(moment);    
 
 class CalendarDisplay extends Component {
   state = {
@@ -70,6 +57,8 @@ class CalendarDisplay extends Component {
 }
 
 function MemberDisplay() {
+    const theme = useTheme();
+
     const Members = [
     { name: 'Benoit' },
     { name: 'Lucas' },
@@ -78,6 +67,11 @@ function MemberDisplay() {
     { name: 'Abdel' },
     ];
 
+    const listStyle = {
+        width: '100%',
+        maxWidth: 360,
+        bgcolor: theme.palette.background.secondary,
+      };
     
     return (
         <>
@@ -89,7 +83,6 @@ function MemberDisplay() {
                             <AccountCircleIcon />
                             <ListItemText primary={member.name} />
                         </ListItem>
-                        <Divider />
                     </>
                 ))}
             </List>
@@ -98,6 +91,12 @@ function MemberDisplay() {
 }
 
 function NewsDisplay() {
+    const theme = useTheme();
+
+    const newStyle = {
+        backgroundColor: theme.palette.background.secondary,
+        padding: '10px'
+    };
 
     const news = [
         { title: 'News 1', content: 'News 1 content' },
@@ -126,7 +125,7 @@ function NewsDisplay() {
     );
 }
 
-const Dashboard = () => {
+function Dashboard() {
     return (
         <>
             <h1>Dashboard</h1>
