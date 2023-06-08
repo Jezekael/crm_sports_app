@@ -95,7 +95,7 @@ function App() {
       },
       secondary: {
         main: '#f8f8ff',
-        variant: '#f8f4ff'
+        variant: '#E6E6FA'
       },
       background: {
         main: '#ffffff',
@@ -126,7 +126,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <HideOnScroll >
-          <AppBar elevation={0} position="sticky" style={{ backgroundColor: theme.palette.secondary.main }}>
+          <AppBar elevation={0} position="sticky" style={{ backgroundColor: theme.palette.secondary.variant }}>
             <Container maxWidth="xl" >
               <Toolbar disableGutters >
                 <AdbIcon sx={{ color: theme.palette.primary.main, display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -258,8 +258,9 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/pricing" element={<Pricing />} />
         </Routes >
+
         <Box
-          sx={{ backgroundColor: theme.palette.secondary.main }}
+          sx={{ backgroundColor: theme.palette.secondary.variant }}
         >
           <Container
             maxWidth="md"

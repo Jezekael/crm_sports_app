@@ -62,7 +62,7 @@ function MemberDisplay() {
     const listStyle = {
         width: '100%',
         maxWidth: 360,
-        bgcolor: theme.palette.secondary.main,
+        bgcolor: theme.palette.secondary.variant,
         color: theme.palette.primary.variant,
       };
     
@@ -123,17 +123,19 @@ function Dashboard() {
     const theme = useTheme();
 
     return (
-        <div style={{padding: 20}}>
+        <div style={{paddingLeft: "5vh", paddingRight: "5vh"}}>
             <h1 style={{color: theme.palette.primary.main}}>Dashboard</h1>
             <Grid container spacing={2}>
-                <Grid xs={9}>
+                <Grid item xs={9}>
                     <CalendarDisplay />
                 </Grid>
-                <Grid xs spacing={10}>
+                <Grid item xs={3} >
                     <MemberDisplay />
                 </Grid>
-                <Grid xs={12}>
+                <Grid item xs={6}>
                     <NewsDisplay />
+                </Grid>
+                <Grid item xs={6}> 
                 </Grid>
             </Grid>
         </div>
