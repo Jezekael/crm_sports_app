@@ -1,75 +1,56 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import { List, ListItem, ListItemText, Divider, Stack } from '@mui/material';
+import { List, ListItem, ListItemText, Divider, Stack, useTheme } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
-// import { render } from "@testing-library/react";
 
-const localizer = momentLocalizer(moment);
+const localizer = momentLocalizer(moment);    
 
-const listStyle = {
-    width: '100%',
-    maxWidth: 360,
-    bgcolor: 'background.paper',
-  };
 
-const newStyle = {
-    backgroundColor: '#f6f7ff',
-    padding: '10px'
-};
-    
 
-class CalendarDisplay extends Component {
-  state = {
-    events: [
-      {
+function CalendarDisplay() {
+    const theme = useTheme();
+
+    const [events, setEvents] = useState([{
         start: moment().toDate(),
         end: moment()
-          .add(1, "days")
-          .toDate(),
+        .add(1, "days")
+        .toDate(),
         title: "Some title"
-      }
-    ]
-  };
+    }]);
 
-  render() {
     return (
         <>
-            <h2>Calendar</h2>
+            <h2 style={{color: theme.palette.primary.main}}>Calendar</h2>
             <Grid container spacing={2}>
-                <Grid item xs={1}
-                style={{
+                <Grid item xs={3}></Grid>
+                <Grid item xs={6} style={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center"
-                }}
-                >
-                </Grid>
-                <Grid item xs={11}>
-                <Grid xs display="flex">
-                    <Grid item>
+                    }}>
                     <div className="calendarStyle">
                         <Calendar
                         localizer={localizer}
                         defaultDate={new Date()}
                         defaultView="month"
-                        events={this.state.events}
+                        events={events}
                         style={{ height: "50vh" }}
                         />
                     </div>
-                    </Grid>
                 </Grid>
-                </Grid >
+                <Grid item xs={3}></Grid>
             </Grid >
-      </>
+        </>
     );
-  }
 }
 
 function MemberDisplay() {
+    const theme = useTheme();
+
     const Members = [
     { name: 'Benoit' },
     { name: 'Lucas' },
@@ -78,10 +59,16 @@ function MemberDisplay() {
     { name: 'Abdel' },
     ];
 
+    const listStyle = {
+        width: '100%',
+        maxWidth: 360,
+        bgcolor: theme.palette.secondary.variant,
+        color: theme.palette.primary.variant,
+      };
     
     return (
         <>
-            <h2>Members</h2>
+            <h2 style={{color: theme.palette.primary.main}}>Members</h2>
             <List sx={listStyle}>
                 {Members.map ((member) => (
                     <>
@@ -89,7 +76,6 @@ function MemberDisplay() {
                             <AccountCircleIcon />
                             <ListItemText primary={member.name} />
                         </ListItem>
-                        <Divider />
                     </>
                 ))}
             </List>
@@ -98,6 +84,13 @@ function MemberDisplay() {
 }
 
 function NewsDisplay() {
+    const theme = useTheme();
+
+    const newStyle = {
+        padding: '10px',
+        backgroundColor: theme.palette.secondary.variant,
+        color: theme.palette.primary.variant,
+    };
 
     const news = [
         { title: 'News 1', content: 'News 1 content' },
@@ -106,7 +99,7 @@ function NewsDisplay() {
 
     return (
         <>
-            <h2>News</h2>
+            <h2 style={{color: theme.palette.primary.main}}>News</h2>
             <Stack 
                 direction="row-reverse"
                 spacing={2}
@@ -126,22 +119,26 @@ function NewsDisplay() {
     );
 }
 
-const Dashboard = () => {
+function Dashboard() {
+    const theme = useTheme();
+
     return (
-        <>
-            <h1>Dashboard</h1>
+        <div style={{paddingLeft: "5vh", paddingRight: "5vh"}}>
+            <h1 style={{color: theme.palette.primary.main}}>Dashboard</h1>
             <Grid container spacing={2}>
-                <Grid xs={9}>
+                <Grid item xs={9}>
                     <CalendarDisplay />
                 </Grid>
-                <Grid xs spacing={10}>
+                <Grid item xs={3} >
                     <MemberDisplay />
                 </Grid>
-                <Grid xs={12}>
+                <Grid item xs={6}>
                     <NewsDisplay />
                 </Grid>
+                <Grid item xs={6}> 
+                </Grid>
             </Grid>
-        </>
+        </div>
     )
 }
 
