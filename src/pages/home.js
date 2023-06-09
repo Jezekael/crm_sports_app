@@ -1,10 +1,16 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Unstable_Grid2';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Grow from '@mui/material/Grow';
-import Box from '@mui/material/Box';
+import {
+  Paper,
+  Typography,
+  Grow,
+  Box
+} from '@mui/material';
+
+import PresDash from './PresDash.png';
+
+import useTheme from '@mui/material/styles/useTheme';
 import "@fontsource/inter";
 
 
@@ -56,9 +62,11 @@ const textFunctionalities =
     "Gestion du club"];
 
 function Home() {
+  const theme = useTheme();
+
   return (
-    <Grid container spacing={0} style={{ backgroundColor: '#f6f7ff' }}>
-      <Grid item xs={12} style={{ padding: '60px 130px' }}>
+    <Grid container spacing={0}>
+      <Grid item xs={7} style={{ padding: '60px 130px', backgroundColor: theme.palette.background.darkBlue }} >
         <Grid xs display="flex" >
           <Grid item>
             <Grow style={{ transformOrigin: '0 0 0' }} in={true} timeout={2000} >
@@ -67,7 +75,14 @@ function Home() {
               <Typography
                 variant="h4"
                 noWrap
-                sx={typoProperties}
+                sx={{
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'Inter',
+                  fontWeight: 700,
+                  letterSpacing: '.001rem',
+                  color: '#ffffff',
+                  textDecoration: 'none'
+                }}
               >
                 Mettez en avant votre maitrise du sport<br />
                 Powered by CRM Sport
@@ -78,8 +93,11 @@ function Home() {
           </Grid>
         </Grid>
       </Grid>
+      <Grid item xs={5} style={{ backgroundColor: theme.palette.background.darkBlue }}>
+        <img style={{ width: 650, height: 300 }} src={PresDash} alt="Logo" />;
+      </Grid>
 
-      <Grid item xs={6} style={{ padding: '0px 130px' }}>
+      <Grid item xs={6} style={{ padding: '100px 100px' }} xsOffset={1} >
         <Grid container justify="center">
           <Grid item>
             <Grow style={{ transformOrigin: '0 0 0' }} in={true} timeout={2000} >
@@ -94,12 +112,9 @@ function Home() {
         </Grid>
       </Grid>
 
-      <Grid item xs={6}>
+      <Grid item xs={5} style={{ padding: '100px 0px' }}>
         <Paper>
           <Grid container justify="center">
-            <Grid item>
-              <Typography variant="body1">Colonne droite</Typography>
-            </Grid>
           </Grid>
         </Paper>
       </Grid>

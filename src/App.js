@@ -13,7 +13,8 @@ import {
   Tooltip,
   MenuItem,
   Slide,
-  useScrollTrigger } from "@mui/material";
+  useScrollTrigger
+} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -89,16 +90,14 @@ function HideOnScroll(props) {
 function App() {
   const theme = createTheme({
     palette: {
-      primary: {
-        main: '#000080',
-        variant: '#16166b'
-      },
-      secondary: {
-        main: '#f8f8ff',
-        variant: '#E6E6FA'
+      font: {
+        white: '#ffffff',
+        darkBlue: '#16166b'
       },
       background: {
-        main: '#ffffff',
+        lightBlue: '#f8f8ff',
+        white: '#ffffff',
+        darkBlue: '#070f2f'
       },
     }
   });
@@ -126,10 +125,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <HideOnScroll >
-          <AppBar elevation={0} position="sticky" style={{ backgroundColor: theme.palette.secondary.variant }}>
+          <AppBar elevation={0} position="sticky" style={{ backgroundColor: theme.palette.background.darkBlue }}>
             <Container maxWidth="xl" >
               <Toolbar disableGutters >
-                <AdbIcon sx={{ color: theme.palette.primary.main, display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                <AdbIcon sx={{ color: theme.palette.font.white, display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                 <Typography
                   variant="h5"
                   noWrap
@@ -141,7 +140,7 @@ function App() {
                     fontFamily: 'Inter',
                     fontWeight: 700,
                     letterSpacing: '.01rem',
-                    color: theme.palette.primary.main,
+                    color: theme.palette.font.white,
                     textDecoration: 'none',
                   }}
                 >
@@ -155,7 +154,7 @@ function App() {
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     onClick={handleOpenNavMenu}
-                    sx={{ color: theme.palette.primary.main }}
+                    sx={{ color: theme.palette.font.white }}
                   >
                     <MenuIcon />
                   </IconButton>
@@ -184,7 +183,7 @@ function App() {
                     ))}
                   </Menu>
                 </Box>
-                <AdbIcon sx={{ color: theme.palette.primary.main, display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                <AdbIcon sx={{ color: theme.palette.font.white, display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                 <Typography
                   variant="h5"
                   noWrap
@@ -197,7 +196,7 @@ function App() {
                     fontFamily: 'Inter',
                     fontWeight: 700,
                     letterSpacing: '.01rem',
-                    color: theme.palette.primary.main,
+                    color: theme.palette.font.white,
                     textDecoration: 'none',
                   }}
                 >
@@ -208,7 +207,7 @@ function App() {
                     <Button
                       key={page}
                       onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: theme.palette.primary.main, fontFamily: "Inter", fontWeight: 300, display: 'block' }}
+                      sx={{ my: 2, color: theme.palette.font.white, fontFamily: "Inter", fontWeight: 300, display: 'block' }}
                       component={Link}
                       to={pathPages[pages.indexOf(page)]}
                     >
@@ -260,7 +259,7 @@ function App() {
         </Routes >
 
         <Box
-          sx={{ backgroundColor: theme.palette.secondary.variant }}
+          sx={{ backgroundColor: theme.palette.background.white }}
         >
           <Container
             maxWidth="md"
@@ -275,7 +274,7 @@ function App() {
             <Grid container spacing={4} justifyContent="space-evenly">
               {footers.map((footer) => (
                 <Grid item xs={6} sm={3} key={footer.title}>
-                  <Typography variant="h6" sx={{ color: theme.palette.primary.main }} gutterBottom>
+                  <Typography variant="h6" sx={{ color: theme.palette.font.darkBlue }} gutterBottom>
                     {footer.title}
                   </Typography>
                   <ul>

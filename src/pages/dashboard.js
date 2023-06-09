@@ -7,7 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-const localizer = momentLocalizer(moment);    
+const localizer = momentLocalizer(moment);
 
 
 
@@ -17,28 +17,28 @@ function CalendarDisplay() {
     const [events, setEvents] = useState([{
         start: moment().toDate(),
         end: moment()
-        .add(1, "days")
-        .toDate(),
+            .add(1, "days")
+            .toDate(),
         title: "Some title"
     }]);
 
     return (
         <>
-            <h2 style={{color: theme.palette.primary.main}}>Calendar</h2>
+            <h2 style={{ color: theme.palette.font.darkBlue }}>Calendar</h2>
             <Grid container spacing={2}>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6} style={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center"
-                    }}>
+                }}>
                     <div className="calendarStyle">
                         <Calendar
-                        localizer={localizer}
-                        defaultDate={new Date()}
-                        defaultView="month"
-                        events={events}
-                        style={{ height: "50vh" }}
+                            localizer={localizer}
+                            defaultDate={new Date()}
+                            defaultView="month"
+                            events={events}
+                            style={{ height: "50vh" }}
                         />
                     </div>
                 </Grid>
@@ -52,25 +52,25 @@ function MemberDisplay() {
     const theme = useTheme();
 
     const Members = [
-    { name: 'Benoit' },
-    { name: 'Lucas' },
-    { name: 'Maiwenn' },
-    { name: 'Jezekael' },
-    { name: 'Abdel' },
+        { name: 'Benoit' },
+        { name: 'Lucas' },
+        { name: 'Maiwenn' },
+        { name: 'Jezekael' },
+        { name: 'Abdel' },
     ];
 
     const listStyle = {
         width: '100%',
         maxWidth: 360,
-        bgcolor: theme.palette.secondary.variant,
-        color: theme.palette.primary.variant,
-      };
-    
+        bgcolor: theme.palette.background.lightBlue,
+        color: theme.palette.font.darkBlue,
+    };
+
     return (
         <>
-            <h2 style={{color: theme.palette.primary.main}}>Members</h2>
+            <h2 style={{ color: theme.palette.font.darkBlue }}>Members</h2>
             <List sx={listStyle}>
-                {Members.map ((member) => (
+                {Members.map((member) => (
                     <>
                         <ListItem>
                             <AccountCircleIcon />
@@ -88,8 +88,8 @@ function NewsDisplay() {
 
     const newStyle = {
         padding: '10px',
-        backgroundColor: theme.palette.secondary.variant,
-        color: theme.palette.primary.variant,
+        backgroundColor: theme.palette.background.lightBlue,
+        color: theme.palette.font.darkBlue,
     };
 
     const news = [
@@ -99,8 +99,8 @@ function NewsDisplay() {
 
     return (
         <>
-            <h2 style={{color: theme.palette.primary.main}}>News</h2>
-            <Stack 
+            <h2 style={{ color: theme.palette.font.darkBlue }}>News</h2>
+            <Stack
                 direction="row-reverse"
                 spacing={2}
                 sx={{ width: '100%' }}
@@ -123,8 +123,8 @@ function Dashboard() {
     const theme = useTheme();
 
     return (
-        <div style={{paddingLeft: "5vh", paddingRight: "5vh"}}>
-            <h1 style={{color: theme.palette.primary.main}}>Dashboard</h1>
+        <div style={{ paddingLeft: "5vh", paddingRight: "5vh" }}>
+            <h1 style={{ color: theme.palette.font.darkBlue }}>Dashboard</h1>
             <Grid container spacing={2}>
                 <Grid item xs={9}>
                     <CalendarDisplay />
@@ -135,7 +135,7 @@ function Dashboard() {
                 <Grid item xs={6}>
                     <NewsDisplay />
                 </Grid>
-                <Grid item xs={6}> 
+                <Grid item xs={6}>
                 </Grid>
             </Grid>
         </div>
