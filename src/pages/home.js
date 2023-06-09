@@ -70,7 +70,6 @@ function Home() {
         <Grid xs display="flex" >
           <Grid item>
             <Grow style={{ transformOrigin: '0 0 0' }} in={true} timeout={2000} >
-              {/* <Slide direction="up" in={true} timeout={1000}> */}
 
               <Typography
                 variant="h4"
@@ -88,7 +87,6 @@ function Home() {
                 Powered by CRM Sport
               </Typography>
 
-              {/* </Slide> */}
             </Grow>
           </Grid>
         </Grid>

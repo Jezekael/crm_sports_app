@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -12,6 +12,9 @@ import StarIcon from '@mui/icons-material/StarBorder';
 import Typography from '@mui/material/Typography';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
+
+import useTheme from '@mui/material/styles/useTheme';
+import "@fontsource/inter";
 
 const tiers = [
     {
@@ -53,12 +56,12 @@ const tiers = [
     },
 ];
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
 
 export default function Pricing() {
+    const theme = useTheme();
+
     return (
-        <ThemeProvider theme={defaultTheme}>
+        <ThemeProvider theme={theme}>
             <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
             <CssBaseline />
 
@@ -68,12 +71,12 @@ export default function Pricing() {
                     component="h1"
                     variant="h2"
                     align="center"
-                    color="text.primary"
+                    sx={{ color: theme.palette.font.darkBlue }}
                     gutterBottom
                 >
                     Pricing
                 </Typography>
-                <Typography variant="h5" align="center" color="text.secondary" component="p">
+                <Typography variant="h5" align="center" sx={{ color: theme.palette.font.darkBlue }} component="p">
                     Choisissez ce qui vous convient le mieux.
                 </Typography>
             </Container>
@@ -144,9 +147,6 @@ export default function Pricing() {
                     ))}
                 </Grid>
             </Container>
-            {/* Footer */}
-
-            {/* End footer */}
-        </ThemeProvider>
+        </ThemeProvider >
     );
 }
