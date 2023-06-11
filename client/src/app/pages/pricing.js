@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Pricing from '../components/Pricing/Pricing';
+import Pricing from './components/Pricing/Pricing';
 
 function pagePricing() {
     return (

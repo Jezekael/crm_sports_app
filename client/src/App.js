@@ -16,13 +16,13 @@ import AdbIcon from '@mui/icons-material/SportsMartialArts';
 import Grid from '@mui/material/Grid';
 import "@fontsource/inter";
 
-import Home from "./pages/home";
-import Connexion from "./pages/connexion";
-import Account from "./pages/account";
-import SignUp from './pages/sign-up';
-import Dashboard from './pages/dashboard';
-import Pricing from './pages/pricing';
-import SignIn from './pages/sign-in';
+import Home from "./app/pages/home";
+import Connexion from "./app/pages/connexion";
+import Account from "./app/pages/account";
+import SignUp from './app/pages/sign-up';
+import Dashboard from './app/pages/dashboard';
+import Pricing from './app/pages/pricing';
+import SignIn from './app/pages/sign-in';
 
 const pages = ['Pricing', 'Sign-in', 'Sign-up'];
 const pathPages = ['/pricing', '/sign-in', '/sign-up'];
