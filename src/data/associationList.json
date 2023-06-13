@@ -1,0 +1,32 @@
+{
+  "associations": [
+    {
+      "nomAsso": "AS Taekwondo",
+      "description": "An ad group contains one or more ads which target a shared set of keywords.",
+      "type": "Sport de combat",
+      "assoId": 0,
+      "lien": "/association/astaekwondo"
+    },
+    {
+      "nomAsso": "AS Karaté",
+      "description": "An ad group contains one or more ads which target a shared set of keywords.",
+      "type": "null",
+      "assoId": 1,
+      "lien": "/association/askarate"
+    },
+    {
+      "nomAsso": "AS Judo",
+      "description": "An ad group contains one or more ads which target a shared set of keywords.",
+      "type": "null",
+      "assoId": 2,
+      "lien": "/association/asjudo"
+    },
+    {
+      "nomAsso": "AS Tennis",
+      "description": "An ad group contains one or more ads which target a shared set of keywords.",
+      "type": "null",
+      "assoId": 3,
+      "lien": "/association/astennis"
+    }
+  ]
+}
