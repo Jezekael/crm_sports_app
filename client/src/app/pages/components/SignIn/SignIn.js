@@ -13,6 +13,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+//imports pour la BD
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Assos } from '../../../assos';
+import { AssosServiceService } from '../../../assos.service';
+
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
