@@ -1,5 +1,4 @@
-{
-  "associations": [
+[
     {
       "nomAsso": "AS Taekwondo",
       "description": "An ad group contains one or more ads which target a shared set of keywords.",
@@ -29,4 +28,3 @@
       "lien": "/association/astennis"
     }
   ]
-}

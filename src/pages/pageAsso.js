@@ -36,34 +36,34 @@ import { blue } from "@mui/material/colors";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-import { user } from "./../data/userInfo";
-import { asso } from "./../data/assoInfo";
+import user from "./../data/userInfo.json";
+import asso from "./../data/assoInfo.json";
 
 const locale = user["locale"];
 const localizationMessages = {
   "fr-FR": {
-    today: "Aujourd'hui",
-    week: "Semaine",
-    day: "Jour",
-    next: "Suivant",
-    back: "Précédent"
+    "today": "Aujourd'hui",
+    "week": "Semaine",
+    "day": "Jour",
+    "next": "Suivant",
+    "back": "Précédent"
   },
   "en-US": {
-    today: "today",
-    week: "Week",
-    day: "Day",
-    next: "Next",
-    back: "Back"
+    "today": "today",
+    "week": "Week",
+    "day": "Day",
+    "next": "Next",
+    "back": "Back"
   }
 };
 
 function CalendarDisplay() {
   const theme = useTheme();
 
-  const getAllDayMessages = (locale) => localizationMessages[locale];
+  const getAllDayMessages = (locale) => localizationMessages[locale]["today"];
   const getWeekMessages = (locale) => localizationMessages[locale]["week"];
   const getDayMessages = (locale) => localizationMessages[locale]["day"];
-
+  
   return (
     <>
       <h2 style={{ color: theme.palette.primary.main }}>Calendar</h2>
@@ -134,6 +134,9 @@ function MemberDisplay() {
 
 function NewsDisplay() {
   const theme = useTheme();
+
+  const getNextMessages = (locale) => localizationMessages[locale]["next"];
+
   const steps = asso["info"];
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = steps.length;

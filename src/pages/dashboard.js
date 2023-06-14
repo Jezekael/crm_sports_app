@@ -26,7 +26,8 @@ import {
   ViewSwitcher
 } from "@devexpress/dx-react-scheduler-material-ui";
 import Paper from "@mui/material/Paper";
-import { user } from "./../data/userInfo";
+import user from "./../data/userInfo";
+import { day } from "date-arithmetic";
 
 function CalendarDisplay() {
   const theme = useTheme();
@@ -49,8 +50,7 @@ function CalendarDisplay() {
     }
   };
   const getAllDayMessages = (locale) => allDayLocalizationMessages[locale];
-  const getWeekMessages = (locale) =>
-    allDayLocalizationMessages[locale]["week"];
+  const getWeekMessages = (locale) => allDayLocalizationMessages[locale]["week"];
   const getDayMessages = (locale) => allDayLocalizationMessages[locale]["day"];
 
   return (

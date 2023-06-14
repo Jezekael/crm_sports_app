@@ -1,59 +1,58 @@
 {
-  "asso": {
-    "assoName": "As Taekwondo",
-    "description": "aaa",
-    "Members": [
-      {
-        "name": "Benoit",
-        "type": "founder"
-      },
-      {
-        "name": "Lucas",
+  "assoName": "As Taekwondo",
+  "description": "aaa",
+  "Members": [
+    {
+      "name": "Benoit",
+      "type": "founder"
+    },
+    {
+      "name": "Lucas",
 
-        "type": "member"
-      },
-      {
-        "name": "Maïwenn",
-        "type": "member"
-      },
-      {
-        "name": "Jezekael",
-        "type": "admin"
-      }
-    ],
-    "rdv": [
-      {
-        "title": "Website Re-Design Plan",
-        "startDate": "2023-6-6 11:30:00",
-        "endDate": "2023-6-6 14:30:00",
-        "id": 0
-      },
-      {
-        "title": "Book Flights to San Fran for Sales Trip",
-        "startDate": "2023-6-6 11:30:00",
-        "endDate": "2023-6-6 14:30:00",
-        "id": 1
-      }
-    ],
-    "info": [
-      {
-        "title": "Select campaign settings",
-        "text": "For each ad campaign that you create, you can control how much you're willing to spend on clicks and conversions, which networks and geographical locations you want your ads to show on, and more.",
-        "author": "",
-        "link": ""
-      },
-      {
-        "title": "Create an ad group",
-        "text": "An ad group contains one or more ads which target a shared set of keywords.",
-        "author": "",
-        "link": ""
-      },
-      {
-        "title": "Create an ad",
-        "text": "Try out different ad text to see what brings in the most customers, and learn how to enhance your ads using features like ad extensions. If you run into any problems with your ads, find out how to tell if they're running and how to resolve approval issues.",
-        "author": "",
-        "link": ""
-      }
-    ]
-  }
+      "type": "member"
+    },
+    {
+      "name": "Maïwenn",
+      "type": "member"
+    },
+    {
+      "name": "Jezekael",
+      "type": "admin"
+    }
+  ],
+  "rdv": [
+    {
+      "title": "Website Re-Design Plan",
+      "startDate": "2023-6-6 11:30:00",
+      "endDate": "2023-6-6 14:30:00",
+      "id": 0
+    },
+    {
+      "title": "Book Flights to San Fran for Sales Trip",
+      "startDate": "2023-6-6 11:30:00",
+      "endDate": "2023-6-6 14:30:00",
+      "id": 1
+    }
+  ],
+  "info": [
+    {
+      "title": "Select campaign settings",
+      "text": "For each ad campaign that you create, you can control how much you're willing to spend on clicks and conversions, which networks and geographical locations you want your ads to show on, and more.",
+      "author": "",
+      "link": ""
+    },
+    {
+      "title": "Create an ad group",
+      "text": "An ad group contains one or more ads which target a shared set of keywords.",
+      "author": "",
+      "link": ""
+    },
+    {
+      "title": "Create an ad",
+      "text": "Try out different ad text to see what brings in the most customers, and learn how to enhance your ads using features like ad extensions. If you run into any problems with your ads, find out how to tell if they're running and how to resolve approval issues.",
+      "author": "",
+      "link": ""
+    }
+  ]
 }
+
