@@ -1,30 +1,61 @@
-function handleSubmit(e) {
-  // Prevent the browser from reloading the page
-  e.preventDefault();
 
-  // Read the form data
-  const form = e.target;
-  const formData = new FormData(form);
+import React, { useState, useEffect } from 'react';
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 
-  // Or you can work with it as a plain object:
-  const formJson = Object.fromEntries(formData.entries());
-  //console.log(formJson);
+function App() {
+    const [ user, setUser ] = useState([]);
+    const [ profile, setProfile ] = useState([]);
+
+    const login = useGoogleLogin({
+        onSuccess: (codeResponse) => setUser(codeResponse),
+        onError: (error) => console.log('Login Failed:', error)
+    });
+
+    useEffect(
+        () => {
+            if (user) {
+                axios
+                    .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+                        headers: {
+                            Authorization: `Bearer ${user.access_token}`,
+                            Accept: 'application/json'
+                        }
+                    })
+                    .then((res) => {
+                        setProfile(res.data);
+                    })
+                    .catch((err) => console.log(err));
+            }
+        },
+        [ user ]
+    );
+
+    // log out function
+    const logOut = () => {
+        googleLogout();
+        setProfile(null);
+    };
+
+    return (
+        <div>
+            <h2>React Google Login</h2>
+            <br />
+            <br />
+            {profile ? (
+                <div>
+                    <img src={profile.picture} alt="user image" />
+                    <h3>User Logged in</h3>
+                    <p>Name: {profile.name}</p>
+                    <p>Email Address: {profile.email}</p>
+                    <br />
+                    <br />
+                    <button onClick={logOut}>Log out</button>
+                </div>
+            ) : (
+                <button onClick={() => login()}>Sign in with Google 🚀 </button>
+            )}
+        </div>
+    );
 }
-const Connexion = () => {
-    return <>
-    <h1>Connexion</h1>
-    <form method="post" onSubmit={handleSubmit}>
-      <h2>Username</h2>
-      <input name="username"/>
-      <h2>Password</h2>
-      <input name="password"/>
-      <button type="submit">Connect</button>
-      <label>
-      <input type="checkbox" name="rememberme" defaultChecked={false} /> Remember me
-      </label>
-    </form>
-    </>;
-    
-  };
-  
-  export default Connexion;
+export default App;
