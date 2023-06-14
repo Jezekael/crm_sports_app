@@ -29,10 +29,10 @@ import Account from "./pages/account";
 import Dashboard from './pages/dashboard';
 import Pricing from './pages/pricing';
 
-const pages = ['Pricing', 'Connexion'];
-const pathPages = ['/pricing', '/Connexion'];
-const settings = ['Account', 'Dashboard', 'Logout'];
-const pathSettings = ['/account', '/dashboard', '/logout']
+const pages = ['Pricing', 'Connexion', 'Dashboard'];
+const pathPages = ['/pricing', '/connexion', '/dashboard'];
+const settings = ['Account', 'Logout'];
+const pathSettings = ['/account', '/logout']
 
 function Copyright(props) {
   return (
@@ -184,6 +184,7 @@ function App() {
                     ))}
                   </Menu>
                 </Box>
+
                 <AdbIcon sx={{ color: theme.palette.primary.main, display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                 <Typography
                   variant="h5"
@@ -203,6 +204,7 @@ function App() {
                 >
                   CRM Sport
                 </Typography>
+
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                   {pages.map((page) => (
                     <Button
