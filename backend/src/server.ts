@@ -1,4 +1,4 @@
-import { assosRouter } from "./assos.routes";
+import { assosRouter } from "./listes.routes";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import express from "express";
